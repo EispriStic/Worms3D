@@ -1,0 +1,98 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/Sounds/piou.wav" type="AudioStream" id=1]
+[ext_resource path="res://Scenes/Gun/Gun.gd" type="Script" id=2]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 3, 1, 1 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 1, 2, 1 )
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Piou_Piou"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Mesh/MeshInstance:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.5, 1, 0 ), Vector3( 0, 2, 0 ), Vector3( 0.5, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Mesh/MeshInstance:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 65 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Mesh/MeshInstance:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0.5, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Mesh/MeshInstance:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[node name="Gun" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Mesh" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Mesh"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 5 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Mesh"]
+transform = Transform( 0.93877, 0.344545, 0, -0.344545, 0.93877, 0, 0, 0, 1, -0.70715, -0.112198, 0 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Piou_Piou = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+
+[node name="RayCast" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 0 )
+enabled = true
+cast_to = Vector3( 999, 0, 0 )
