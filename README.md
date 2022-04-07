@@ -1,5 +1,4 @@
 # Le jeu (on a pas encore de nom)
-==
 
 Jeu créé par : Mattéo Luque, Amélie Hacque et Xavier Maziere
 
