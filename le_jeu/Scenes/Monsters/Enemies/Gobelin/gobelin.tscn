@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Scenes/Monsters/enemis/gobelin/gobelin.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Monsters/enemis/Sans nom 2_page-0001.jpg" type="Texture" id=2]
+[ext_resource path="res://Assets/Monsters/Enemies/Monster_test_texture.jpg" type="Texture" id=1]
+[ext_resource path="res://Scenes/Monsters/Enemies/Gobelin/Gobelin.gd" type="Script" id=2]
 
 [node name="gobelin" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
