@@ -1,3 +1,5 @@
 extends Node
 
-var gravity = 10
+var gravity = 2500
+var baseSpeed = 7500
+var jumpForce = 500

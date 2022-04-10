@@ -14,7 +14,6 @@ extents = Vector2( 8, 8 )
 
 [sub_resource type="StreamTexture" id=2]
 flags = 4
-load_path = "res://.import/3.png-103029a8cb09e835cdc36b1b6be45aca.stex"
 
 [resource]
 0/name = "1"
