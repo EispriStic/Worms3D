@@ -79,3 +79,10 @@ Prochains objectifs :
 * Monstres
     * Un sprite par monstre
     * Mouvements type "patrouille"
+
+### 14 Avril 2022
+
+* Déplacements du personnage
+* TileSet et TileMap de test
+* Design du mage
+* Patrouille des monstres
