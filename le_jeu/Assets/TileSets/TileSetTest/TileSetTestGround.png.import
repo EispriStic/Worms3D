@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/9.png-aea95123928170f4eb1a35e2138964e4.stex"
+path="res://.import/TileSetTestGround.png-d7967e8bc4525e65221792b27390ce8f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/TileSets/TileSetTest/9.png"
-dest_files=[ "res://.import/9.png-aea95123928170f4eb1a35e2138964e4.stex" ]
+source_file="res://Assets/TileSets/TileSetTest/TileSetTestGround.png"
+dest_files=[ "res://.import/TileSetTestGround.png-d7967e8bc4525e65221792b27390ce8f.stex" ]
 
 [params]
 
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
