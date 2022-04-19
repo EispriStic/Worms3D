@@ -55,12 +55,12 @@ func chasse(delta):
 	move_and_slide(mouvement, Vector2.UP)
 
 
-func _on_AgroArea_body_entered(body):
-	if body.get_name() == "Player":
-		agro = true
-	player = body.get_position()
-	diff = gobelin.x - player.x
-	if diff > 0:
-		direction = -1
-	elif diff < 0:
-		direction = 1
+#func _on_AgroArea_body_entered(body):
+#	if body.get_name() == "Player":
+#		agro = true
+#	player = body.get_position()
+#	diff = gobelin.x - player.x
+#	if diff > 0:
+#		direction = -1
+#	elif diff < 0:
+#		direction = 1
