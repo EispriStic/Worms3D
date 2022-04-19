@@ -1,11 +1,28 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Assets/Monsters/Enemies/Monster_test_texture.jpg" type="Texture" id=1]
+[ext_resource path="res://Assets/Monsters/Enemies/Gobelin/gobelin_test_texture.jpg" type="Texture" id=1]
 [ext_resource path="res://Scenes/Monsters/Enemies/Gobelin/gobelin.gd" type="Script" id=2]
 
-[node name="gobelin" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 147, 147 )
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 87.0057
+
+[node name="gobelin" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.25, 0.25 )
+[node name="texture" type="Sprite" parent="."]
+scale = Vector2( 0.055, 0.055 )
 texture = ExtResource( 1 )
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+scale = Vector2( 0.055, 0.055 )
+shape = SubResource( 1 )
+
+[node name="AgroArea" type="Area2D" parent="."]
+
+[node name="agro" type="CollisionShape2D" parent="AgroArea"]
+shape = SubResource( 5 )
+
+[connection signal="body_entered" from="AgroArea" to="." method="_on_AgroArea_body_entered"]
