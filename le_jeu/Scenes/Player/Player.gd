@@ -3,13 +3,14 @@ extends KinematicBody2D
 export(String) var classPlayer
 
 #Statistiques
-var vitality
-var strength
-var defense
-var intelligence
-var luck
-var dexterity
-var speed
+export(int) var vitality
+export(int) var strength
+export(int) var defense
+export(int) var intelligence
+export(int) var luck
+export(int) var dexterity
+export(int) var speed
+
 var hp
 var moveSpeed
 var jumpSpeed
@@ -17,33 +18,6 @@ var gravity
 var velocity
 
 func _ready():
-	if classPlayer == "Warrior":
-		vitality = 6
-		strength = 5
-		defense = 5
-		intelligence = 1
-		luck = 2
-		dexterity = 1
-		speed = 3
-	
-	elif classPlayer == "Rogue":
-		vitality = 3
-		strength = 3
-		defense = 2
-		intelligence = 1
-		luck = 4
-		dexterity = 5
-		speed = 5
-	
-	elif classPlayer == "Mage":
-		vitality = 4
-		strength = 1
-		defense = 1
-		intelligence = 5
-		luck = 3
-		dexterity = 2
-		speed = 4
-	
 	hp = vitality * 10
 	moveSpeed = Globals.baseSpeed * speed
 	jumpSpeed = Globals.jumpForce

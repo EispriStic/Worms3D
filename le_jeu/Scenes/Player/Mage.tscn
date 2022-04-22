@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
+
+[node name="Player" instance=ExtResource( 1 )]
+classPlayer = "Mage"
+vitality = 4
+strength = 1
+defense = 1
+intelligence = 5
+luck = 3
+dexterity = 2
+speed = 4
