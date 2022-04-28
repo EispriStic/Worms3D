@@ -11,3 +11,6 @@ intelligence = 5
 luck = 3
 dexterity = 2
 speed = 4
+
+[node name="Sprite" parent="." index="0"]
+frame = 1

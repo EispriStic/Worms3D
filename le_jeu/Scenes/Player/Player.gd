@@ -24,9 +24,27 @@ func _ready():
 	gravity = Globals.gravity
 	velocity = Vector2.ZERO
 
+func _process(_delta):
+	#Horizontal flip
+	if velocity.x < 0:
+		$Sprite.flip_h = true
+	elif velocity.x > 0:
+		$Sprite.flip_h = false
+	
+	#Animations
+	if velocity.y != 0:
+		if $Sprite.get_animation() != "Jump":
+			$Sprite.set_animation("Jump")
+	elif velocity.x != 0:
+		if $Sprite.get_animation() != "Run":
+			$Sprite.set_animation("Run")
+	elif $Sprite.get_animation() != "Idle":
+		$Sprite.set_animation("Idle")
+		
+
 func _physics_process(delta):
 	move(delta)
-	
+
 func move(delta):
 	# reset horizontal velocity
 	velocity.x = 0
@@ -51,3 +69,5 @@ func move(delta):
 	# actually move the player
 	velocity = move_and_slide(velocity, Vector2.UP)
 
+func takeDamage(mini,maxi):
+	hp -= Globals.rng.randi(mini,maxi+1)
