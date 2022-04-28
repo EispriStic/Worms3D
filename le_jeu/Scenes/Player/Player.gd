@@ -23,23 +23,24 @@ func _ready():
 	jumpSpeed = Globals.jumpForce
 	gravity = Globals.gravity
 	velocity = Vector2.ZERO
+	$Rotating/Sprite.play()
 
 func _process(_delta):
 	#Horizontal flip
 	if velocity.x < 0:
-		$Sprite.flip_h = true
+		$Rotating.scale.x = -1
 	elif velocity.x > 0:
-		$Sprite.flip_h = false
+		$Rotating.scale.x = 1
 	
 	#Animations
 	if velocity.y != 0:
-		if $Sprite.get_animation() != "Jump":
-			$Sprite.set_animation("Jump")
+		if $Rotating/Sprite.get_animation() != "Jump":
+			$Rotating/Sprite.set_animation("Jump")
 	elif velocity.x != 0:
-		if $Sprite.get_animation() != "Run":
-			$Sprite.set_animation("Run")
-	elif $Sprite.get_animation() != "Idle":
-		$Sprite.set_animation("Idle")
+		if $Rotating/Sprite.get_animation() != "Run":
+			$Rotating/Sprite.set_animation("Run")
+	elif $Rotating/Sprite.get_animation() != "Idle":
+		$Rotating/Sprite.set_animation("Idle")
 		
 
 func _physics_process(delta):
