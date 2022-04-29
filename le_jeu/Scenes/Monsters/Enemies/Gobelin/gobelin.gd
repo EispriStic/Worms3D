@@ -60,7 +60,19 @@ func _on_AggroArea_body_entered(body):
 
 
 
+<<<<<<< Updated upstream
 func _on_AggroArea_body_exited(body):
 	if body.get_name() == "Player":
 		aggro = false
 		player = null	# détecte lea sortie de de la zone d'aggro
+=======
+func _on_AgroArea_body_entered(body):
+	if body.get_name() == "Player":
+		agro = true
+	player = body.get_position()
+	diff = gobelin.x - player.x
+	if diff > 0:
+		direction = -1
+	elif diff < 0:
+		direction = 1
+>>>>>>> Stashed changes
