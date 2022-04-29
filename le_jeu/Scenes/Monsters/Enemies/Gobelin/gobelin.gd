@@ -12,55 +12,55 @@ var HP = vitality * 10
 
 var mouvement = Vector2.ZERO
 var direction = 1
-var agro = false
+var aggro = false
 var player
-var diff
-var gobelin
 
-
-func _ready():
-	pass
-
-func _process(delta):
-	gobelin = self.get_position()
-	if agro:
+func _physics_process(delta):
+	if aggro:
 		chasse(delta)
 #		attaque()
-		agro=false
 	else:
 		patrouille(delta)
+	if mouvement.x < 0:
+		scale.x = -1
+	elif mouvement.x > 0:
+		scale.x = 1
 
 func patrouille(delta):
-	if is_on_wall():
+	if is_on_wall():	# changement de direction quand rencontre mur
 		direction *= -1
 	
 	mouvement.x = Globals.baseSpeed * direction 
-	mouvement.x *= speed * delta
+	mouvement.x *= speed * delta	# déplacement
 	
-	mouvement.y = Globals.gravity * delta
+	if !is_on_floor():
+		mouvement.y += Globals.gravity * delta	# aplication de la gravité
 	
-	move_and_slide(mouvement, Vector2.UP)
+	mouvement = move_and_slide(mouvement, Vector2.UP)
 
 func chasse(delta):
 	if is_on_wall() and is_on_floor():
-		mouvement.y  = - Globals.jumpForce
+		mouvement.y  = - Globals.jumpForce	# saute si obstacle lors de la poursuite
 	
-	mouvement.x = Globals.baseSpeed 
-	mouvement.x *= speed * delta
+	if !is_on_floor():
+		mouvement.y += Globals.gravity * delta	# aplication de la gravité
 	
-	mouvement.x *= direction
+	direction = - sign((position - player.position).x)	# détecte la direction vers le joueur
 	
-	mouvement.y = Globals.gravity * delta
+	mouvement.x = Globals.baseSpeed * direction
+	mouvement.x *= speed * delta	# déplacement
 	
-	move_and_slide(mouvement, Vector2.UP)
+	mouvement = move_and_slide(mouvement, Vector2.UP)
 
 
-#func _on_AgroArea_body_entered(body):
-#	if body.get_name() == "Player":
-#		agro = true
-#	player = body.get_position()
-#	diff = gobelin.x - player.x
-#	if diff > 0:
-#		direction = -1
-#	elif diff < 0:
-#		direction = 1
+func _on_AggroArea_body_entered(body):
+	if body.get_name() == "Player":
+		aggro = true
+		player = body	# détecte la présence du joueur dans la zone d'aggro
+
+
+
+func _on_AggroArea_body_exited(body):
+	if body.get_name() == "Player":
+		aggro = false
+		player = null	# détecte lea sortie de de la zone d'aggro

@@ -72,3 +72,4 @@ func move(delta):
 
 func takeDamage(mini,maxi):
 	hp -= Globals.rng.randi(mini,maxi+1)
+	print("ouïlle !")

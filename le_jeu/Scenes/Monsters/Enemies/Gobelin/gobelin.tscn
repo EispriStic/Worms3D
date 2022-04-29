@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Monsters/Enemies/Gobelin/gobelin_test_texture.jpg" type="Texture" id=1]
 [ext_resource path="res://Scenes/Monsters/Enemies/Gobelin/gobelin.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Monsters/Enemies/Gobelin/goblinWeapon.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 147, 147 )
@@ -20,9 +21,13 @@ texture = ExtResource( 1 )
 scale = Vector2( 0.055, 0.055 )
 shape = SubResource( 1 )
 
-[node name="AgroArea" type="Area2D" parent="."]
+[node name="AggroArea" type="Area2D" parent="."]
 
-[node name="agro" type="CollisionShape2D" parent="AgroArea"]
+[node name="aggro" type="CollisionShape2D" parent="AggroArea"]
 shape = SubResource( 5 )
 
-[connection signal="body_entered" from="AgroArea" to="." method="_on_AgroArea_body_entered"]
+[node name="goblinWeapon" parent="." instance=ExtResource( 3 )]
+position = Vector2( 7, 2 )
+
+[connection signal="body_entered" from="AggroArea" to="." method="_on_AggroArea_body_entered"]
+[connection signal="body_exited" from="AggroArea" to="." method="_on_AggroArea_body_exited"]
