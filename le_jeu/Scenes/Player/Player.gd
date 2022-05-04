@@ -17,6 +17,8 @@ var jumpSpeed
 var gravity
 var velocity
 
+var lifeBar
+
 func _ready():
 	hp = vitality * 10
 	moveSpeed = Globals.baseSpeed * speed
@@ -24,6 +26,8 @@ func _ready():
 	gravity = Globals.gravity
 	velocity = Vector2.ZERO
 	$Rotating/Sprite.play()
+	
+	lifeBar = $Camera/HUD/LifeBar/Texture
 
 func _process(_delta):
 	#Horizontal flip
@@ -41,7 +45,6 @@ func _process(_delta):
 			$Rotating/Sprite.set_animation("Run")
 	elif $Rotating/Sprite.get_animation() != "Idle":
 		$Rotating/Sprite.set_animation("Idle")
-		
 
 func _physics_process(delta):
 	move(delta)
@@ -71,5 +74,9 @@ func move(delta):
 	velocity = move_and_slide(velocity, Vector2.UP)
 
 func takeDamage(mini,maxi):
-	hp -= Globals.rng.randi(mini,maxi+1)
-	print("ouïlle !")
+	var damage = Globals.rng.randi_range(mini,maxi)
+	hp -= damage
+	lifeBar.value = (hp * 100) / (vitality * 10)
+	
+	print("HP : ", hp)
+	print("lifeBar :", lifeBar.value)

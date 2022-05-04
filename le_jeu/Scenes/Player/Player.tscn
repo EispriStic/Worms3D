@@ -61,7 +61,7 @@ script = ExtResource( 3 )
 
 [node name="LifeBar" type="Node2D" parent="Camera/HUD"]
 
-[node name="TextureProgress" type="TextureProgress" parent="Camera/HUD/LifeBar"]
+[node name="Texture" type="TextureProgress" parent="Camera/HUD/LifeBar"]
 margin_left = -124.0
 margin_top = 63.0
 margin_right = -60.0
