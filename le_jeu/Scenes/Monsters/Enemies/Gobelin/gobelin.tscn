@@ -26,8 +26,8 @@ shape = SubResource( 1 )
 [node name="aggro" type="CollisionShape2D" parent="AggroArea"]
 shape = SubResource( 5 )
 
-[node name="goblinWeapon" parent="." instance=ExtResource( 3 )]
-position = Vector2( 7, 2 )
+[node name="goblinWeapon" parent="." groups=["equipment"] instance=ExtResource( 3 )]
+position = Vector2( 0, 2 )
 
 [connection signal="body_entered" from="AggroArea" to="." method="_on_AggroArea_body_entered"]
 [connection signal="body_exited" from="AggroArea" to="." method="_on_AggroArea_body_exited"]

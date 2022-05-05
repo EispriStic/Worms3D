@@ -46,10 +46,10 @@ func _process(_delta):
 	elif $Rotating/Sprite.get_animation() != "Idle":
 		$Rotating/Sprite.set_animation("Idle")
 
-func _physics_process(delta):
-	move(delta)
+func _physics_process(_delta):
+	move()
 
-func move(delta):
+func move():
 	# reset horizontal velocity
 	velocity.x = 0
 	
@@ -59,11 +59,8 @@ func move(delta):
 	if Input.is_action_pressed("left"):
 		velocity.x -= moveSpeed
 	
-	# apply delta for smooth movement
-	velocity.x *= delta
-	
 	# apply gravity
-	velocity.y += gravity * delta
+	velocity.y += gravity
 	
 	# jump will happen on the next frame
 	if Input.is_action_just_pressed("jump"):
@@ -77,6 +74,3 @@ func takeDamage(mini,maxi):
 	var damage = Globals.rng.randi_range(mini,maxi)
 	hp -= damage
 	lifeBar.value = (hp * 100) / (vitality * 10)
-	
-	print("HP : ", hp)
-	print("lifeBar :", lifeBar.value)

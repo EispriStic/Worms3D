@@ -1,8 +1,8 @@
 extends Node
 
-var gravity = 2500
-var baseSpeed = 2000
-var jumpForce = 500
+var gravity = 20
+var baseSpeed = 30
+var jumpForce = 350
 
 var rng = RandomNumberGenerator.new()
 
